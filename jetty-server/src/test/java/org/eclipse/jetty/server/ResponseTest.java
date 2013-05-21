@@ -94,6 +94,11 @@ public class ResponseTest
 
         assertEquals(null,response.getContentType());
 
+        response.addHeader("Content-Type","text/something");
+        assertEquals("text/something",response.getContentType());
+
+        response.recycle();
+        
         response.setHeader("Content-Type","text/something");
         assertEquals("text/something",response.getContentType());
         

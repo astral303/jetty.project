@@ -570,6 +570,12 @@ public class Response implements HttpServletResponse
      */
     public void addHeader(String name, String value)
     {
+        if (HttpHeaders.CONTENT_TYPE.equalsIgnoreCase(name))
+        {
+            setContentType(value);
+            return;
+        }
+
         if (_connection.isIncluding())
         {
             if (name.startsWith(SET_INCLUDE_HEADER_PREFIX))
